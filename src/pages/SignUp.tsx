@@ -2,19 +2,28 @@ import { useState } from "react";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
 
-export function SignIn() {
+export function SignUp() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   function onSubmit(event: React.FormEvent) {
     event.preventDefault();
 
-    console.log(email, password);
+    console.log(name, email, password, passwordConfirm);
   }
 
   return (
     <form onSubmit={onSubmit} className="w-full flex flex-col gap-4">
+      <Input
+        required
+        legend="Name"
+        placeholder="Seu nome"
+        onChange={(event) => setName(event.target.value)}
+      />
+
       <Input
         required
         legend="E-mail"
@@ -31,15 +40,23 @@ export function SignIn() {
         onChange={(event) => setPassword(event.target.value)}
       />
 
+      <Input
+        required
+        legend="Confirmação da Senha"
+        type="password"
+        placeholder="123456"
+        onChange={(event) => setPasswordConfirm(event.target.value)}
+      />
+
       <Button type="submit" isLoading={isLoading}>
-        Entrar
+        Cadastrar
       </Button>
 
       <a
-        href="/signup"
+        href="/"
         className="text-sm font-semibold text-gray-100 mt-10 mb-4 text-center hover:text-green-800 transition ease-linear"
       >
-        Criar conta
+        Já tenho uma conta
       </a>
     </form>
   );
