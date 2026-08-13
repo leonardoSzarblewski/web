@@ -10,7 +10,7 @@ type Props = {
 
 export function Pagination({ current, total }: Props) {
   return (
-    <div className="flex flex-1 justify-center items-center gap-4">
+    <div className="flex flex-1 justify-center items-center gap-2">
       <Button variant="iconSmall">
         <img src={leftSvg} alt="Ícone de voltar" />
       </Button>
